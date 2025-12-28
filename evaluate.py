@@ -1,7 +1,4 @@
-# evaluate.py
-
 from transformers import BertForTokenClassification, BertTokenizer
-
 
 # 加载模型和分词器
 model = BertForTokenClassification.from_pretrained('./output')

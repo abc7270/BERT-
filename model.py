@@ -1,5 +1,3 @@
-# model.py
-
 from torch.utils.data import Dataset
 import torch
 

@@ -1,16 +1,9 @@
-# train.py
-
 from transformers import BertForTokenClassification, Trainer, TrainingArguments
 from model import NERDataset
-from data_preprocessing import preprocess_data
-from data_preprocessing import label_map
+from data_preprocessing import preprocess_data, label_map, load_data
 
-
-# 假设你的数据已经通过 preprocess_data 处理过
-train_texts = ['人民日报 1月1日 报道']
-train_labels = [['B-ORG', 'O', 'O', 'O']]  # 对应的标签
-
-# 数据预处理
+# 加载数据并进行预处理
+train_texts, train_labels = load_data('data/source_BIO_2014_corpus.txt', 'data/target_BIO_2014_corpus.txt')
 train_encodings, train_label_ids = preprocess_data(train_texts, train_labels)
 
 # 创建数据集对象
