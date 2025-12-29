@@ -33,8 +33,8 @@ for i in range(5):
 # ---------------------------
 # 3) Preprocess (tokenize + align labels)
 # ---------------------------
-train_encodings, train_label_ids = preprocess_data(train_texts, train_labels, max_length=512)
-val_encodings, val_label_ids = preprocess_data(val_texts, val_labels, max_length=512)
+train_encodings, train_label_ids = preprocess_data(train_texts, train_labels, max_length=256)
+val_encodings, val_label_ids = preprocess_data(val_texts, val_labels, max_length=256)
 
 train_dataset = NERDataset(train_encodings, train_label_ids)
 eval_dataset = NERDataset(val_encodings, val_label_ids)
@@ -91,8 +91,8 @@ training_args = TrainingArguments(
     logging_steps=100,
 
     learning_rate=2e-5,
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
+    per_device_train_batch_size=8,
+    per_device_eval_batch_size=4,
 
     num_train_epochs=1,        # ✅ 先跑 1 epoch
     weight_decay=0.01,
